@@ -5,6 +5,11 @@ Currently it is built to operate on a Raspberry Pi4 4Gb. It is testing and worki
 
 It assumes Ubuntu Server 22.04 as the Raspberry Pi OS and that ROS2 Humble is installed.
 
+Set up requires
+```
+sudo apt install ros-humble-joy-linux
+```
+
 # TurtleBot3
 <img src="https://github.com/ROBOTIS-GIT/emanual/blob/master/assets/images/platform/turtlebot3/logo_turtlebot3.png" width="300">
 
