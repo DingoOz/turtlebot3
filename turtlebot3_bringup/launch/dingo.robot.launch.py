@@ -31,6 +31,7 @@ from launch_ros.actions import Node
 
 
 def generate_launch_description():
+    #could set deafult to burger
     TURTLEBOT3_MODEL = os.environ['TURTLEBOT3_MODEL']
     LDS_MODEL = os.environ['LDS_MODEL']
 #    LDS_LAUNCH_FILE = '/hlds_laser.launch.py'
