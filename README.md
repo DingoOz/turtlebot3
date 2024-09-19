@@ -9,6 +9,12 @@ Set up requires
 ```
 sudo apt install ros-humble-joy-linux
 ```
+It also assumes pulseaudio is installed and a bluetooth speaker is set up.
+
+
+Other changes inlude using the branch ros2 as the default branch.
+The robot uses ROS_DOMAIN_ID = 30
+
 
 # TurtleBot3
 <img src="https://github.com/ROBOTIS-GIT/emanual/blob/master/assets/images/platform/turtlebot3/logo_turtlebot3.png" width="300">
