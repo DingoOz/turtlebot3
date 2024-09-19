@@ -22,18 +22,25 @@ import os
 
 from ament_index_python.packages import get_package_share_directory
 from launch import LaunchDescription
-from launch.actions import DeclareLaunchArgument
+from launch.actions import DeclareLaunchArgument, SetEnvironmentVariable
 from launch.actions import IncludeLaunchDescription
 from launch.launch_description_sources import PythonLaunchDescriptionSource
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, EnvironmentVariable
 from launch.substitutions import ThisLaunchFileDir
 from launch_ros.actions import Node
 
 
 def generate_launch_description():
-    #could set deafult to burger
-    TURTLEBOT3_MODEL = os.environ['TURTLEBOT3_MODEL']
-    LDS_MODEL = os.environ['LDS_MODEL']
+	
+
+    
+    #TURTLEBOT3_MODEL = os.environ['TURTLEBOT3_MODEL']
+    turtlebot3_model = EnvironmentVariable('TURTLEBOT3_MODEL', default_value='burger')
+    
+    #set the ROS_DOMAIN_ID
+    ros_domain_id = '30'
+    
+    LDS_MODEL = os.environ.get('LDS_MODEL', 'A1')
 #    LDS_LAUNCH_FILE = '/hlds_laser.launch.py'
     LDS_LAUNCH_FILE = '/hlds_laser.launch.py'
 	
@@ -75,6 +82,14 @@ def generate_launch_description():
     use_sim_time = LaunchConfiguration('use_sim_time', default='false')
 
     return LaunchDescription([
+    
+     	# Set TURTLEBOT3_MODEL environment variable if not already set
+        SetEnvironmentVariable('TURTLEBOT3_MODEL', turtlebot3_model),
+        
+        # Set ROS_DOMAIN_ID to 30
+        SetEnvironmentVariable('ROS_DOMAIN_ID', ros_domain_id),
+    
+    
         DeclareLaunchArgument(
             'use_sim_time',
             default_value=use_sim_time,
